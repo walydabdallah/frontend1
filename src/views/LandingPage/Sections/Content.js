@@ -15,10 +15,9 @@ import styles from "assets/jss/material-kit-react/views/landingPageSections/prod
 import Table from "../../../components/Table/Table"
 import { getAllWords } from "../../../api/api"
 const useStyles = makeStyles(styles);
-const subah = () => {
-    console.log("Rim Jhim")
-}
 export default function ProductSection(props) {
+    const [data, setData] = React.useState(null);
+    const [page, setPage] = React.useState(0);
     const classes = useStyles();
     const columns = [
         { id: 'id', label: 'Order ID', minWidth: 170 },
@@ -114,41 +113,52 @@ export default function ProductSection(props) {
             note,
         };
     }
-
-    let rows = [
-        createData('1112', 'IN', "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN"),
-        createData('1112', 'IN', "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN"),
-        createData('1112', 'IN', "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN"),
-        createData('1112', 'IN', "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN"),
-        createData('1112', 'IN', "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN"),
-        createData('1112', 'IN', "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN"),
-        createData('1112', 'IN', "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN"),
-        createData('1112', 'IN', "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN"),
-        createData('1112', 'IN', "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN"),
-        createData('1112', 'IN', "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN"),
-        createData('1112', 'IN', "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN"),
-        createData('1112', 'IN', "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN"),
-        createData('1112', 'IN', "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN"),
-        createData('1112', 'IN', "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN"),
-        createData('1112', 'IN', "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN", "IN"),
-    ]
-
-    React.useEffect(() => {
+    const setPageHandler = (e, page) => {
+        setPage(page)
+    }
+    const fetch = () => {
         let params = {
-            page: 1,
-            status: props.filter,
-            search: props.search
+            page: page ? +page + 1 : 1,
+            status: props.filter ? props.filter : "",
+            search: props.search ? props.search : ""
         }
         getAllWords(params).then((res) => {
-            console.log(res.data);
+            setData(res.data.data);
         })
-    }, [props.filter])
+    }
+
+    React.useEffect(() => {
+        fetch()
+    }, [page])
+
+    let rows = data ? data.length ?
+        data.map(element => (
+            createData(
+                element.orderId,
+                element.orderDate,
+                element.orderStatus,
+                element.firstname,
+                element.lastname,
+                element.shipping.address1,
+                element.shipping.postCode,
+                element.shipping.city,
+                element.telephone,
+                element.orderId,
+                element.quantity,
+                element.totalOrderPrice,
+                element.orderId,
+                element.customerNote,
+            )
+        ))
+        : [] : []
+
     return (
         <div className={classes.section}>
             <GridContainer justify="center">
                 <GridItem xs={12} sm={12} md={12}>
                     <>
-                        <Table columns={columns} rows={rows} />
+                        {console.log(rows)}
+                        <Table columns={columns} rows={rows} page={page} setPageHandler={setPageHandler} />
                     </>
                 </GridItem>
             </GridContainer>

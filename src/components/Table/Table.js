@@ -22,14 +22,12 @@ const useStyles = makeStyles({
 });
 
 export default function StickyHeadTable(props) {
-    const { columns, rows } = props;
+    let { columns, rows, page, setPageHandler } = props;
+    // rows = React.useMemo(() => rows, [page])
+    console.log(rows)
     const classes = useStyles();
-    const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
-    const handleChangePage = (event, newPage) => {
-        setPage(newPage);
-    };
 
     // const handleChangeRowsPerPage = (event) => {
     //     setRowsPerPage(+event.target.value);
@@ -59,6 +57,7 @@ export default function StickyHeadTable(props) {
                                 <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
                                     {columns.map((column) => {
                                         const value = row[column.id];
+                                        console.log(rows)
                                         return (
                                             <TableCell key={column.id} align={column.align}>
                                                 {value}
@@ -77,7 +76,9 @@ export default function StickyHeadTable(props) {
                 count={rows.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
-                onChangePage={handleChangePage}
+                onChangePage={setPageHandler}
+                nextIconButtonProps={{ disabled: false }}
+                backIconButtonProps={{ disabled: false }}
             // onChangeRowsPerPage={handleChangeRowsPerPage}
             />
         </Paper>
