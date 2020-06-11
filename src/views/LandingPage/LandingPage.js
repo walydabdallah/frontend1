@@ -30,10 +30,7 @@ export default function LandingPage(props) {
   const [filter, setFilter] = React.useState(drop_down[0])
   const classes = useStyles();
   const { ...rest } = props;
-  const filterBy = (value) => {
-    setFilter(value)
-  }
-  React.memo(() => filter, [filter])
+
 
   return (
     <div>
@@ -41,7 +38,7 @@ export default function LandingPage(props) {
         color="transparent"
         routes={dashboardRoutes}
         brand="Material Kit React"
-        rightLinks={<HeaderLinks filterBy={filterBy} />}
+        rightLinks={<HeaderLinks  />}
         fixed
         changeColorOnScroll={{
           height: 400,

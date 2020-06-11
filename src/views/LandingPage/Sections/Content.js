@@ -10,89 +10,199 @@ import Fingerprint from "@material-ui/icons/Fingerprint";
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
 import InfoArea from "components/InfoArea/InfoArea.js";
-import ReactTable from 'react-table'
+import ReactTable from 'react-table-6';
+import 'react-table-6/react-table.css';
 import styles from "assets/jss/material-kit-react/views/landingPageSections/productStyle.js";
-import Table from "../../../components/Table/Table"
 import { getAllWords } from "../../../api/api"
+import Filters from "../../../components/Filters/Filters"
 const useStyles = makeStyles(styles);
-export default function ProductSection(props) {
-    const [data, setData] = React.useState(null);
+export default function Content(props) {
+    const [rows, setRows] = React.useState([]);
     const [page, setPage] = React.useState(0);
-    const classes = useStyles();
+    const [loading, setLoading] = React.useState(false);
+    const [filter, setFilter] = React.useState("any");
+
+
     const columns = [
-        { id: 'id', label: 'Order ID', minWidth: 170 },
-        { id: 'date', label: 'Order Date', minWidth: 170 },
         {
-            id: 'status',
-            label: 'Order Status',
+            Header: props => <span style={{ color: 'black' }}>Order ID</span>,
+            accessor: 'id',
             minWidth: 170,
-            align: 'right',
+            getProps: (state, rowInfo, column) => {
+                return {
+                    style: {
+                        color: 'black',
+                    },
+                };
+            },
         },
         {
-            id: 'fname',
-            label: 'First Name',
+            accessor: 'date',
+            Header: props => <span style={{ color: 'black' }}>Order Date</span>,
             minWidth: 170,
-            align: 'right',
+            getProps: (state, rowInfo, column) => {
+                return {
+                    style: {
+                        color: 'black',
+                    },
+                };
+            },
         },
         {
-            id: 'lname',
-            label: 'Last Name',
+            accessor: 'status',
+            Header: props => <span style={{ color: 'black' }}>Order Status</span>,
             minWidth: 170,
             align: 'right',
+            getProps: (state, rowInfo, column) => {
+                return {
+                    style: {
+                        color: 'black',
+                    },
+                };
+            },
         },
         {
-            id: 'address',
-            label: 'Shipping Address',
+            accessor: 'fname',
+            Header: props => <span style={{ color: 'black' }}>First Name</span>,
             minWidth: 170,
             align: 'right',
+            getProps: (state, rowInfo, column) => {
+                return {
+                    style: {
+                        color: 'black',
+                    },
+                };
+            },
         },
         {
-            id: 'postCode',
-            label: 'Shipping Post Code',
+            accessor: 'lname',
+            Header: props => <span style={{ color: 'black' }}>Order ID</span>,
             minWidth: 170,
             align: 'right',
+            getProps: (state, rowInfo, column) => {
+                return {
+                    style: {
+                        color: 'black',
+                    },
+                };
+            },
         },
         {
-            id: 'city',
-            label: 'Shipping City',
+            accessor: 'address',
+            Header: props => <span style={{ color: 'black' }}>Shipping Address</span>,
             minWidth: 170,
             align: 'right',
+            getProps: (state, rowInfo, column) => {
+                return {
+                    style: {
+                        color: 'black',
+                    },
+                };
+            },
         },
         {
-            id: 'tel',
-            label: 'Telephone Number',
+            accessor: 'postCode',
+            Header: props => <span style={{ color: 'black' }}>Shipping Post Code</span>,
             minWidth: 170,
             align: 'right',
+            getProps: (state, rowInfo, column) => {
+                return {
+                    style: {
+                        color: 'black',
+                    },
+                };
+            },
         },
         {
-            id: 'orders',
-            label: 'Product Ordered',
+            accessor: 'city',
+            Header: props => <span style={{ color: 'black' }}>Shipping City</span>,
             minWidth: 170,
             align: 'right',
+            getProps: (state, rowInfo, column) => {
+                return {
+                    style: {
+                        color: 'black',
+                    },
+                };
+            },
         },
         {
-            id: 'qty',
-            label: 'Quantity',
+            accessor: 'tel',
+            Header: props => <span style={{ color: 'black' }}>Order ID</span>,
             minWidth: 170,
             align: 'right',
+            getProps: (state, rowInfo, column) => {
+                return {
+                    style: {
+                        color: 'black',
+                    },
+                };
+            },
         },
         {
-            id: 'price',
-            label: 'Total Order Price',
+            accessor: 'orders',
+            Header: props => <span style={{ color: 'black' }}>Product Ordered</span>,
             minWidth: 170,
             align: 'right',
+            getProps: (state, rowInfo, column) => {
+                return {
+                    style: {
+                        color: 'black',
+                    },
+                };
+            },
         },
         {
-            id: 'details',
-            label: 'Delivery Details',
+            accessor: 'qty',
+            Header: props => <span style={{ color: 'black' }}>Quantity</span>,
             minWidth: 170,
             align: 'right',
+            getProps: (state, rowInfo, column) => {
+                return {
+                    style: {
+                        color: 'black',
+                    },
+                };
+            },
         },
         {
-            id: 'note',
-            label: 'Customer Note',
+            accessor: 'price',
+            Header: props => <span style={{ color: 'black' }}>Total Order Price</span>,
             minWidth: 170,
             align: 'right',
+            getProps: (state, rowInfo, column) => {
+                return {
+                    style: {
+                        color: 'black',
+                    },
+                };
+            },
+        },
+        {
+            accessor: 'details',
+            Header: props => <span style={{ color: 'black' }}>Delivery Details</span>,
+            minWidth: 170,
+            align: 'right',
+            getProps: (state, rowInfo, column) => {
+                return {
+                    style: {
+                        color: 'black',
+                    },
+                };
+            },
+        },
+        {
+            accessor: 'note',
+            Header: props => <span style={{ color: 'black' }}>Customer Note</span>,
+            minWidth: 170,
+            align: 'right',
+            getProps: (state, rowInfo, column) => {
+                return {
+                    style: {
+                        color: 'black',
+                    },
+                };
+            },
         },
     ];
     function createData(id, date, status, fname, lname, address, postCode, city, tel, orders, qty, price, details, note, ) {
@@ -113,53 +223,76 @@ export default function ProductSection(props) {
             note,
         };
     }
-    const setPageHandler = (e, page) => {
-        setPage(page)
-    }
-    const fetch = () => {
+    const classes = useStyles();
+    const fetch = (state) => {
+        setLoading(true)
         let params = {
-            page: page ? +page + 1 : 1,
-            status: props.filter ? props.filter : "",
+            page: state && state.page ? +state.page + 1 : 1,
+            status: filter ? filter : "any",
             search: props.search ? props.search : ""
         }
         getAllWords(params).then((res) => {
-            setData(res.data.data);
+            let data = (res.data.data);
+            let rows = data && data.length ?
+                data.map(element => (
+                    createData(
+                        element.orderId,
+                        element.orderDate,
+                        element.orderStatus,
+                        element.firstname,
+                        element.lastname,
+                        element.shipping.address1,
+                        element.shipping.postCode,
+                        element.shipping.city,
+                        element.telephone,
+                        element.orderId,
+                        element.quantity,
+                        element.totalOrderPrice,
+                        element.orderId,
+                        element.customerNote,
+                    )
+                ))
+                : []
+            setRows(rows)
+            setPage(res.data.pages)
+            setLoading(false)
         })
     }
-
+    const filterBy = (value) => {
+        setFilter(value)
+    }
+    React.memo(() => filter, [filter])
     React.useEffect(() => {
         fetch()
-    }, [page])
-
-    let rows = data ? data.length ?
-        data.map(element => (
-            createData(
-                element.orderId,
-                element.orderDate,
-                element.orderStatus,
-                element.firstname,
-                element.lastname,
-                element.shipping.address1,
-                element.shipping.postCode,
-                element.shipping.city,
-                element.telephone,
-                element.orderId,
-                element.quantity,
-                element.totalOrderPrice,
-                element.orderId,
-                element.customerNote,
-            )
-        ))
-        : [] : []
+    }, [filter])
 
     return (
         <div className={classes.section}>
-            <GridContainer justify="center">
+            <GridContainer justify="left">
+
+                <Filters filterBy={filterBy} />
+
                 <GridItem xs={12} sm={12} md={12}>
-                    <>
-                        {console.log(rows)}
-                        <Table columns={columns} rows={rows} page={page} setPageHandler={setPageHandler} />
-                    </>
+
+                    <ReactTable
+                        manual
+                        // ref={(refReactTable) => { this.refReactTable = refReactTable; }}
+                        data={rows}
+                        pages={page ? page : 1}
+                        onFetchData={fetch}
+                        showPageSizeOptions={false}
+                        loading={loading}
+                        sortable={false}
+                        filterable={false}
+                        overflow={"unset"}
+                        columns={columns}
+                        defaultPageSize={10}
+                        showPagination={true}
+                        showPaginationBottom
+                        showPaginationTop={false}
+                        className="-striped -highlight"
+                    />
+
                 </GridItem>
             </GridContainer>
         </div>
