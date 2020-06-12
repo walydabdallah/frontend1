@@ -12,7 +12,8 @@ import Button from "components/CustomButtons/Button.js";
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import SearchIcon from '@material-ui/icons/Search';
 import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js";
-
+import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
 const useStyles = makeStyles(styles);
 import { drop_down } from "../../assets/constants/Drop"
 export default function HeaderLinks(props) {
@@ -51,12 +52,21 @@ export default function HeaderLinks(props) {
                 </Menu>
             </ListItem>
             <ListItem className={classes.listItem}>
-                <Button
-                    color="transparent"
-                    className={classes.navLink}
-                >
-                    <SearchIcon className={classes.icons} /> Search
-        </Button>
+                <TextField
+                    className={classes.margin}
+                    color={'primary'}
+                    autoFocus={true}
+                    style={{ color: "white" }}
+                    id="input-with-icon-textfield"
+                    label="TextField"
+                    InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <SearchIcon className={classes.icons} />
+                            </InputAdornment>
+                        ),
+                    }}
+                />
             </ListItem>
         </List>
     );
