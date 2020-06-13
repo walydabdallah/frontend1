@@ -37,8 +37,8 @@ export default function LandingPage(props) {
       <Header
         color="transparent"
         routes={dashboardRoutes}
-        brand="Food x Wood"
-        rightLinks={<HeaderLinks  />}
+        brand="Food n Wood"
+        rightLinks={<HeaderLinks />}
         fixed
         changeColorOnScroll={{
           height: 400,
@@ -47,8 +47,10 @@ export default function LandingPage(props) {
         {...rest}
       />
       <Parallax filter image={require("assets/img/landing-bg.jpg")}>
-        <div className={classes.container}>
-          <GridContainer>
+        <div className={classes.container} style={{ 'width': '75%' }}>
+
+          <img src={require("assets/img/Logo.png")} />
+          {/* <GridContainer>
             <GridItem xs={12} sm={12} md={6}>
               <h1 className={classes.title}>Your Story Starts With Us.</h1>
               <h4>
@@ -68,12 +70,12 @@ export default function LandingPage(props) {
                 Watch video
               </Button>
             </GridItem>
-          </GridContainer>
+          </GridContainer> */}
         </div>
       </Parallax>
       <div className={classNames(classes.main, classes.mainRaised)}>
         <div className={classes.container}>
-          <Content filter={filter}/>
+          <Content filter={filter} />
         </div>
       </div>
     </div>
