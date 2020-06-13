@@ -20,11 +20,13 @@ export default function HeaderLinks(props) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
+
     };
 
     const handleClose = (event, val) => {
         setAnchorEl(null);
-        props.filterBy(val)
+        if (val) props.filterBy(val)
+
     };
 
 
@@ -43,7 +45,7 @@ export default function HeaderLinks(props) {
                     anchorEl={anchorEl}
                     keepMounted
                     open={Boolean(anchorEl)}
-                    onClose={handleClose}
+                    onClose={(e) => handleClose(e, "")}
                 >
                     <MenuList>
                         {drop_down.map(val => (
