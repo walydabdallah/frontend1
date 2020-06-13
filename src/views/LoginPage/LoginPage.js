@@ -21,6 +21,8 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 import image from "assets/img/bg7.jpg";
 import { login } from "../../api/api";
+import SnackbarContent from "components/Snackbar/SnackbarContent.js";
+import { toast } from 'react-toastify';
 const useStyles = makeStyles(styles);
 
 export default function LoginPage(props) {
@@ -38,6 +40,7 @@ export default function LoginPage(props) {
       email: email,
       password: password
     }
+
     let storedCreds = {
       name: "admin",
       email: "admin@example.com",
@@ -46,13 +49,26 @@ export default function LoginPage(props) {
     login(obj).then(res => {
       if (res.data && res.data.success) {
         props.history.push("/landing-page");
+      } else {
+        
+       alert("Please Enter the correct Credentials!!")
       }
     })
   }
   const classes = useStyles();
+  const notify = () => {
+     
+    toast.warn("Warning Notification !", {
+      position: toast.POSITION.TOP_CENTER
+    });
+
+  };
   const { ...rest } = props;
   return (
     <div>
+
+
+
       <Header
         absolute
         color="transparent"
@@ -74,8 +90,8 @@ export default function LoginPage(props) {
                 <form className={classes.form}>
                   <CardHeader color="primary" className={classes.cardHeader}>
                     <h4>Login</h4>
-                    <div className={classes.socialLine}>
-                      <Button
+                    {/* <div className={classes.socialLine}> */}
+                      {/* <Button
                         justIcon
                         href="#pablo"
                         target="_blank"
@@ -102,7 +118,7 @@ export default function LoginPage(props) {
                       >
                         <i className={"fab fa-google-plus-g"} />
                       </Button>
-                    </div>
+                    </div> */}
                   </CardHeader>
                   <p className={classes.divider}>Or Be Classical</p>
                   <CardBody>
