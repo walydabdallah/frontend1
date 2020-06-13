@@ -21,6 +21,7 @@ import FullScreenModal from "../../../components/Modals/FullScreenModal"
 import Button from '@material-ui/core/Button';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import { withRouter, Link } from "react-router-dom"
+import "./Section.css";
 const useStyles = makeStyles(styles);
 let count = 0;
 function Content(props) {
@@ -283,8 +284,8 @@ function Content(props) {
                         }} style={{ cursor: "pointer" }}>{`${element.orderedProducts.length} Read More...`}</u>,
                         element.quantity,
                         element.totalOrderPrice,
-                        <ul style={{ top: "0", bottom: "0" }}>
-                            <li key={1}>{element.deliveryDetails.date}</li>
+                        <ul style={{ fontSize: "10px", padding: "0px" }}>
+                            <li style={{padding:"0",marginBottom:"-8px",marginTop:"-10px"}} key={1}>{element.deliveryDetails.date}</li>
                             <li key={2}>{element.deliveryDetails.timeslot}</li>
                         </ul>,
                         element.customerNote,
@@ -309,7 +310,7 @@ function Content(props) {
 
                             })
                         }}
-                            variant="contained"
+                            variant="outlined"
                             color="primary"
                             target="_blank"
                         >
