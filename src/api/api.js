@@ -6,3 +6,7 @@ export const getAllWords = async (params) => {
     return await resolve(axios.get(`${apiBaseUrl}/order/all?page=${params.page}&search=${params.search}&status=${params.status}`)
         .then(res => res.data));
 }
+export const login = async (body) => {
+    return await resolve(axios.post(`${apiBaseUrl}/login`, body)
+        .then(res => res.data));
+}
