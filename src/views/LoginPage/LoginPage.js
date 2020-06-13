@@ -20,6 +20,7 @@ import CardFooter from "components/Card/CardFooter.js";
 import CustomInput from "components/CustomInput/CustomInput.js";
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 import image from "assets/img/bg7.jpg";
+import { login } from "../../api/api";
 const useStyles = makeStyles(styles);
 
 export default function LoginPage(props) {
@@ -42,9 +43,11 @@ export default function LoginPage(props) {
       email: "admin@example.com",
       password: "admin"
     }
-    if (JSON.stringify(obj) === JSON.stringify(storedCreds)) {
-      props.history.push("/landing-page");
-    }
+    login(obj).then(res => {
+      if (res.data && res.data.success) {
+        props.history.push("/landing-page");
+      }
+    })
   }
   const classes = useStyles();
   const { ...rest } = props;

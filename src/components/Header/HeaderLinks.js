@@ -38,36 +38,6 @@ export default function HeaderLinks(props) {
   return (
     <List className={classes.list}>
       <ListItem className={classes.listItem}>
-        <Button
-          onClick={handleClick}
-          color="transparent"
-          className={classes.navLink}
-        >
-          Filter <ArrowDropDownIcon className={classes.icons} />
-        </Button>
-        <Menu
-          id="simple-menu"
-          anchorEl={anchorEl}
-          keepMounted
-          open={Boolean(anchorEl)}
-          onClose={handleClose}
-        >
-          <MenuList>
-            {drop_down.map(val => (
-              <MenuItem onClick={(event) => handleClose(event, val)}>{val}</MenuItem>
-            ))}
-          </MenuList>
-        </Menu>
-      </ListItem>
-      <ListItem className={classes.listItem}>
-        <Button
-          color="transparent"
-          className={classes.navLink}
-        >
-          <SearchIcon className={classes.icons} /> Search
-        </Button>
-      </ListItem>
-      <ListItem className={classes.listItem}>
         {/*<Tooltip title="Delete">
           <IconButton aria-label="Delete">
             <DeleteIcon />
