@@ -294,7 +294,7 @@ function Content(props) {
                                 pathname: "/generate-pdf",
                                 state: {
                                     deliveryDate: element.deliveryDetails.date,
-                                    shippingName: "S-N",
+                                    shippingName: element.firstname,
                                     shippingAddress: element.shipping.address1,
                                     shippingPostcode: element.shipping.postCode,
                                     shippingCity: element.shipping.city,
