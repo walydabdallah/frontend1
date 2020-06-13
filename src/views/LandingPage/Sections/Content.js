@@ -22,6 +22,7 @@ import Button from '@material-ui/core/Button';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import { withRouter, Link } from "react-router-dom"
 const useStyles = makeStyles(styles);
+let count = 0;
 function Content(props) {
     const [rows, setRows] = React.useState([]);
     const [page, setPage] = React.useState(0);
@@ -250,7 +251,11 @@ function Content(props) {
     }
     const classes = useStyles();
     const fetch = (state, q) => {
-        if (typeof q === "object") return
+        // if (typeof q === "object") return
+        if (!count) {
+            count++;
+            return
+        }
         setLoading(true)
         let params = {
             page: state && state.page ? +state.page + 1 : 1,
@@ -305,7 +310,7 @@ function Content(props) {
                             })
                         }}
                             variant="contained"
-                             color="primary"
+                            color="primary"
                             target="_blank"
                         >
                             <VisibilityIcon />
@@ -339,7 +344,7 @@ function Content(props) {
                         // ref={(refReactTable) => { this.refReactTable = refReactTable; }}
                         data={rows}
                         pages={page ? page : 1}
-                        onFetchData={fetch}
+                        onFetchData={(state) => fetch(state, "")}
                         showPageSizeOptions={false}
                         loading={loading}
                         sortable={false}
