@@ -6,14 +6,13 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
-
+import InputAdornment from '@material-ui/core/InputAdornment';
 import Menu from '@material-ui/core/Menu';
 import Button from "components/CustomButtons/Button.js";
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import SearchIcon from '@material-ui/icons/Search';
 import styles from "assets/jss/material-kit-react/components/headerLinksStyle.js";
 import TextField from '@material-ui/core/TextField';
-import InputAdornment from '@material-ui/core/InputAdornment';
 const useStyles = makeStyles(styles);
 import { drop_down } from "../../assets/constants/Drop"
 export default function HeaderLinks(props) {
@@ -27,9 +26,11 @@ export default function HeaderLinks(props) {
         setAnchorEl(null);
         props.filterBy(val)
     };
+
+
     return (
-        <List className={classes.list} style={{ background: "black" }}>
-            <ListItem className={classes.listItem}>
+        <List className={classes.list} >
+            <ListItem style={{ background: "black" }} className={classes.listItem}>
                 <Button
                     onClick={handleClick}
                     color="transparent"
@@ -52,21 +53,21 @@ export default function HeaderLinks(props) {
                 </Menu>
             </ListItem>
             <ListItem className={classes.listItem}>
-                <TextField
-                    className={classes.margin}
-                    color={'primary'}
-                    autoFocus={true}
-                    style={{ color: "white" }}
-                    id="input-with-icon-textfield"
-                    label="TextField"
-                    InputProps={{
-                        startAdornment: (
-                            <InputAdornment position="start">
-                                <SearchIcon className={classes.icons} />
-                            </InputAdornment>
-                        ),
-                    }}
-                />
+                <div className={classes.listItem} style={{ backgroundColor: "white", marginLeft: "10px" }}>
+                    <TextField
+                        className={classes.margin}
+                        id="input-with-icon-textfield"
+                        onChange={props.onChangeSearch}
+                        label="Search"
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    <SearchIcon className={classes.icons} />
+                                </InputAdornment>
+                            ),
+                        }}
+                    />
+                </div>
             </ListItem>
         </List>
     );

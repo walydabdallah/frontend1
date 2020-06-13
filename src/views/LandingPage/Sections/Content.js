@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -15,14 +15,22 @@ import 'react-table-6/react-table.css';
 import styles from "assets/jss/material-kit-react/views/landingPageSections/productStyle.js";
 import { getAllWords } from "../../../api/api"
 import Filters from "../../../components/Filters/Filters"
+import _ from "lodash";
+import { formatDate } from "../../../assets/helpers/helpers"
+import FullScreenModal from "../../../components/Modals/FullScreenModal"
 const useStyles = makeStyles(styles);
 export default function Content(props) {
     const [rows, setRows] = React.useState([]);
     const [page, setPage] = React.useState(0);
     const [loading, setLoading] = React.useState(false);
     const [filter, setFilter] = React.useState("any");
+    const [data, setData] = React.useState([]);
+    const [open, setOpen] = React.useState(false);
 
-
+    const delayedQuery = React.useCallback(_.debounce((q) => fetch(null, q), 500), []);
+    const onChange = e => {
+        delayedQuery(e.target.value);
+    };
     const columns = [
         {
             Header: props => <span style={{ color: 'black' }}>Order ID</span>,
@@ -76,7 +84,7 @@ export default function Content(props) {
         },
         {
             accessor: 'lname',
-            Header: props => <span style={{ color: 'black' }}>Order ID</span>,
+            Header: props => <span style={{ color: 'black' }}>Last Name</span>,
             minWidth: 170,
             align: 'right',
             getProps: (state, rowInfo, column) => {
@@ -128,7 +136,7 @@ export default function Content(props) {
         },
         {
             accessor: 'tel',
-            Header: props => <span style={{ color: 'black' }}>Order ID</span>,
+            Header: props => <span style={{ color: 'black' }}>Tel Number</span>,
             minWidth: 170,
             align: 'right',
             getProps: (state, rowInfo, column) => {
@@ -224,12 +232,12 @@ export default function Content(props) {
         };
     }
     const classes = useStyles();
-    const fetch = (state) => {
+    const fetch = (state, q) => {
         setLoading(true)
         let params = {
             page: state && state.page ? +state.page + 1 : 1,
             status: filter ? filter : "any",
-            search: props.search ? props.search : ""
+            search: q ? q : ""
         }
         getAllWords(params).then((res) => {
             let data = (res.data.data);
@@ -237,7 +245,7 @@ export default function Content(props) {
                 data.map(element => (
                     createData(
                         element.orderId,
-                        element.orderDate,
+                        formatDate(element.orderDate),
                         element.orderStatus,
                         element.firstname,
                         element.lastname,
@@ -245,10 +253,16 @@ export default function Content(props) {
                         element.shipping.postCode,
                         element.shipping.city,
                         element.telephone,
-                        element.orderId,
+                        <u onClick={() => {
+                            setOpen(true)
+                            setData(element.orderedProducts)
+                        }} style={{ cursor: "pointer" }}>{`${element.orderedProducts.length} Read More...`}</u>,
                         element.quantity,
                         element.totalOrderPrice,
-                        element.orderId,
+                        <ul style={{ top: "0", bottom: "0" }}>
+                            <li key={1}>{element.deliveryDetails.date}</li>
+                            <li key={2}>{element.deliveryDetails.timeslot}</li>
+                        </ul>,
                         element.customerNote,
                     )
                 ))
@@ -261,8 +275,7 @@ export default function Content(props) {
     const filterBy = (value) => {
         setFilter(value)
     }
-    React.memo(() => filter, [filter])
-    React.useEffect(() => {
+    useEffect(() => {
         fetch()
     }, [filter])
 
@@ -270,8 +283,8 @@ export default function Content(props) {
         <div className={classes.section}>
             <GridContainer justify="left">
 
-                <Filters filterBy={filterBy} />
-
+                <Filters filterBy={filterBy} onChangeSearch={onChange} />
+                <FullScreenModal open={open} data={data} handleClose={() => setOpen(false)} />
                 <GridItem xs={12} sm={12} md={12}>
 
                     <ReactTable
