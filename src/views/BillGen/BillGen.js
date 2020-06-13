@@ -38,13 +38,13 @@ export default function CenteredGrid(props) {
                             <Grid item xs={1}>
                             </Grid>
                             <Grid item xs={5}>
-                                <h1 style={{ textAlign: "left", color: "Black" }}>
+                                <h2 style={{ textAlign: "left", color: "Black" }}>
                                     <b>Bezorgen: </b>{/*{deliveryDate ? deliveryDate : ""} */}
-                                </h1>
+                                </h2>
                             </Grid>
                             <Grid item xs={5}>
-                                <h1 style={{ paddingLeft: '20%', textAlign: "left", color: "Black" }}>Order ID: {orderId}
-                                </h1>
+                                <h2 style={{ paddingLeft: '10%', textAlign: "left", color: "Black" }}>Order ID: {orderId}
+                                </h2>
                             </Grid>
                             <Grid item xs={1}>
                             </Grid>
@@ -53,12 +53,12 @@ export default function CenteredGrid(props) {
                             <Grid item xs={1}>
                             </Grid>
                             <Grid item xs={5}>
-                                <h2 style={{ textAlign: "left" }}><b>Bezorgen bij:</b>
-                                </h2>
+                                <h3 style={{ textAlign: "left" }}><b>Bezorgen bij:</b>
+                                </h3>
                             </Grid>
                             <Grid item xs={5}>
-                                <h2 style={{ paddingLeft: '20%', textAlign: "left" }}><b>Factuurgegevens:</b>
-                                </h2>
+                                <h3 style={{ paddingLeft: '20%', textAlign: "left" }}><b>Factuurgegevens:</b>
+                                </h3>
                             </Grid>
                             <Grid item xs={1}>
                             </Grid>
