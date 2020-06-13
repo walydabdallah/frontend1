@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 export default function CenteredGrid(props) {
     const classes = useStyles();
     React.useEffect(() => {
-        // window.print();
+        window.print();
     }, [])
 
     let { total, orderProduct, deliveryDate, shippingName, shippingAddress, shippingPostcode, shippingCity, telePhone, orderId, invoiceName, invoiceAddress, invoicePostcode, invoiceCity } = props.history.location.state;
