@@ -50,14 +50,14 @@ export default function LoginPage(props) {
       if (res.data && res.data.success) {
         props.history.push("/landing-page");
       } else {
-        
-       alert("Please Enter the correct Credentials!!")
+
+        alert("Please Enter the correct Credentials!!")
       }
     })
   }
   const classes = useStyles();
   const notify = () => {
-     
+
     toast.warn("Warning Notification !", {
       position: toast.POSITION.TOP_CENTER
     });
@@ -72,7 +72,7 @@ export default function LoginPage(props) {
       <Header
         absolute
         color="transparent"
-        brand="Lets Start with React"
+        brand="Food n Wood"
         {...rest}
       />
       <div
@@ -91,7 +91,7 @@ export default function LoginPage(props) {
                   <CardHeader color="primary" className={classes.cardHeader}>
                     <h4>Login</h4>
                     {/* <div className={classes.socialLine}> */}
-                      {/* <Button
+                    {/* <Button
                         justIcon
                         href="#pablo"
                         target="_blank"
@@ -120,9 +120,8 @@ export default function LoginPage(props) {
                       </Button>
                     </div> */}
                   </CardHeader>
-                  <p className={classes.divider}>Or Be Classical</p>
                   <CardBody>
-                    <CustomInput
+                    {/* <CustomInput
                       labelText="First Name..."
                       id="first"
                       value={name}
@@ -138,9 +137,9 @@ export default function LoginPage(props) {
                           </InputAdornment>
                         )
                       }}
-                    />
+                    /> */}
                     <CustomInput
-                      labelText="Email..."
+                      labelText="Email"
                       id="email"
                       onChange={(e) => setEmail(e.target.value)}
                       value={email}

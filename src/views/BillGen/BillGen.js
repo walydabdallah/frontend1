@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import { formatDate } from "../../assets/helpers/helpers"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 export default function CenteredGrid(props) {
     const classes = useStyles();
     React.useEffect(() => {
-        window.print();
+        // window.print();
     }, [])
 
     let { total, orderProduct, deliveryDate, shippingName, shippingAddress, shippingPostcode, shippingCity, telePhone, orderId, invoiceName, invoiceAddress, invoicePostcode, invoiceCity } = props.history.location.state;
@@ -33,17 +34,86 @@ export default function CenteredGrid(props) {
                 </Grid>
                 <Grid item xs={10}>
                     <Paper className={classes.paper}>
-                        <Grid container spacing={3}>
+                        <Grid container>
                             <Grid item xs={1}>
                             </Grid>
                             <Grid item xs={5}>
-                                <h6 style={{ textAlign: "left" }}>
-                                    <b>Delivery Date:</b>{deliveryDate ? deliveryDate : ""}
-                                </h6>
+                                <h1 style={{ textAlign: "left", color: "Black" }}>
+                                    <b>Bezorgen: </b>{/*{deliveryDate ? deliveryDate : ""} */}
+                                </h1>
                             </Grid>
                             <Grid item xs={5}>
-                                <h6 style={{ textAlign: "center" }}><b>Order ID:</b>{orderId}
-                                </h6>
+                                <h1 style={{ paddingLeft: '20%', textAlign: "left", color: "Black" }}>Order ID: {orderId}
+                                </h1>
+                            </Grid>
+                            <Grid item xs={1}>
+                            </Grid>
+                        </Grid>
+                        <Grid container>
+                            <Grid item xs={1}>
+                            </Grid>
+                            <Grid item xs={5}>
+                                <h2 style={{ textAlign: "left" }}><b>Bezorgen bij:</b>
+                                </h2>
+                            </Grid>
+                            <Grid item xs={5}>
+                                <h2 style={{ paddingLeft: '20%', textAlign: "left" }}><b>Factuurgegevens:</b>
+                                </h2>
+                            </Grid>
+                            <Grid item xs={1}>
+                            </Grid>
+                        </Grid>
+                        <Grid container>
+                            <Grid item xs={1}>
+                            </Grid>
+                            <Grid item xs={5}>
+                                <h4 style={{ textAlign: "left" }}>{shippingName}
+                                </h4>
+                            </Grid>
+                            <Grid item xs={5}>
+                                <h4 style={{ paddingLeft: '20%', textAlign: "left" }}>{invoiceName}
+                                </h4>
+                            </Grid>
+                            <Grid item xs={1}>
+                            </Grid>
+                        </Grid>
+                        <Grid container>
+                            <Grid item xs={1}>
+                            </Grid>
+                            <Grid item xs={5}>
+                                <h4 style={{ textAlign: "left" }}>{shippingAddress}
+                                </h4>
+                            </Grid>
+                            <Grid item xs={5}>
+                                <h4 style={{ paddingLeft: '20%', textAlign: "left" }}>{invoiceAddress}
+                                </h4>
+                            </Grid>
+                            <Grid item xs={1}>
+                            </Grid>
+                        </Grid>
+                        <Grid container>
+                            <Grid item xs={1}>
+                            </Grid>
+                            <Grid item xs={5}>
+                                <h4 style={{ textAlign: "left" }}>{shippingPostcode}
+                                </h4>
+                            </Grid>
+                            <Grid item xs={5}>
+                                <h4 style={{ paddingLeft: '20%', textAlign: "left" }}>{invoicePostcode}
+                                </h4>
+                            </Grid>
+                            <Grid item xs={1}>
+                            </Grid>
+                        </Grid>
+                        <Grid container>
+                            <Grid item xs={1}>
+                            </Grid>
+                            <Grid item xs={5}>
+                                <h4 style={{ textAlign: "left" }}>{shippingCity}
+                                </h4>
+                            </Grid>
+                            <Grid item xs={5}>
+                                <h4 style={{ paddingLeft: '20%', textAlign: "left" }}>{invoiceCity}</h4>
                             </Grid>
                             <Grid item xs={1}>
                             </Grid>
@@ -52,64 +122,8 @@ export default function CenteredGrid(props) {
                             <Grid item xs={1}>
                             </Grid>
                             <Grid item xs={5}>
-                                <h6 style={{ textAlign: "left" }}><b>Shipping Name:</b>{shippingName}
-                                </h6>
-                            </Grid>
-                            <Grid item xs={5}>
-
-                                <h6 style={{ textAlign: "center" }}><b>Invoice Name:</b>{invoiceName}
-                                </h6>
-                            </Grid>
-                            <Grid item xs={1}>
-                            </Grid>
-                        </Grid>
-                        <Grid container spacing={3}>
-                            <Grid item xs={1}>
-                            </Grid>
-                            <Grid item xs={5}>
-                                <h6 style={{ textAlign: "left" }}><b>Shipping Address:</b>{shippingAddress}
-                                </h6>
-                            </Grid>
-                            <Grid item xs={5}>
-                                <h6 style={{ textAlign: "center" }}><b>Invoice Address:</b>{invoiceAddress}
-                                </h6>
-                            </Grid>
-                            <Grid item xs={1}>
-                            </Grid>
-                        </Grid>
-                        <Grid container spacing={3}>
-                            <Grid item xs={1}>
-                            </Grid>
-                            <Grid item xs={5}>
-                                <h6 style={{ textAlign: "left" }}><b>Shipping Postcode:</b>{shippingPostcode}
-                                </h6>
-                            </Grid>
-                            <Grid item xs={5}>
-                                <h6 style={{ textAlign: "center" }}><b>Invoice Postcode:</b>{invoicePostcode}
-                                </h6>
-                            </Grid>
-                            <Grid item xs={1}>
-                            </Grid>
-                        </Grid>
-                        <Grid container spacing={3}>
-                            <Grid item xs={1}>
-                            </Grid>
-                            <Grid item xs={5}>
-                                <h6 style={{ textAlign: "left" }}><b>Shipping City:</b>{shippingCity}
-                                </h6>
-                            </Grid>
-                            <Grid item xs={5}>
-                                <h6 style={{ textAlign: "center" }}><b>Invoice City:</b>{invoiceCity}</h6>
-                            </Grid>
-                            <Grid item xs={1}>
-                            </Grid>
-                        </Grid>
-                        <Grid container spacing={3}>
-                            <Grid item xs={1}>
-                            </Grid>
-                            <Grid item xs={5}>
-                                <h6 style={{ textAlign: "left" }}><b>Telephone:</b>{telePhone}
-                                </h6>
+                                <h4 style={{ textAlign: "left" }}>{telePhone}
+                                </h4>
                             </Grid>
                             <Grid item xs={5}>
 
@@ -123,10 +137,10 @@ export default function CenteredGrid(props) {
                             <Grid item xs={1}>
                             </Grid>
                             <Grid item xs={7}>
-                                <h4 style={{ fontWeight: "bolder", textAlign: "left" }}>Product</h4>
+                                <h4 style={{ textAlign: "left", color: 'black' }}><b>Product</b></h4>
                             </Grid>
                             <Grid item xs={3}>
-                                <h4 style={{ fontWeight: "bolder" }}>Quantity</h4>
+                                <h4 style={{ color: 'black' }}><b>Antal</b></h4>
                             </Grid>
                             <Grid item xs={1}>
                             </Grid>
@@ -155,7 +169,7 @@ export default function CenteredGrid(props) {
 
                             </Grid>
                             <Grid item xs={3}>
-                                <h4 style={{ fontWeight: "bolder" }}>Total</h4>
+                                <h4 style={{ color: 'black' }}><b>Total</b></h4>
                             </Grid>
                             <Grid item xs={2}>
                                 <h4 style={{ fontWeight: "normal", textAlign: "left" }}>{total}</h4>

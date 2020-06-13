@@ -36,7 +36,7 @@ export default function FullScreenDialog(props) {
         {
             Header: props => <span style={{ color: 'black' }}>Order ID</span>,
             accessor: 'id',
-            minWidth: 170,
+            minWidth: 90,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
@@ -46,7 +46,19 @@ export default function FullScreenDialog(props) {
             },
         },
         {
-            Header: props => <span style={{ color: 'black' }}>Name</span>,
+            Header: props => <span style={{ color: 'black' }}>Product ID</span>,
+            accessor: 'product_id',
+            minWidth: 100,
+            getProps: (state, rowInfo, column) => {
+                return {
+                    style: {
+                        color: 'black',
+                    },
+                };
+            },
+        },
+        {
+            Header: props => <span style={{ color: 'black' }}>Product Name</span>,
             accessor: 'name',
             minWidth: 170,
             getProps: (state, rowInfo, column) => {
@@ -60,7 +72,7 @@ export default function FullScreenDialog(props) {
         {
             Header: props => <span style={{ color: 'black' }}>Price</span>,
             accessor: 'price',
-            minWidth: 170,
+            minWidth: 100,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
@@ -70,21 +82,9 @@ export default function FullScreenDialog(props) {
             },
         },
         {
-            Header: props => <span style={{ color: 'black' }}>Product ID</span>,
-            accessor: 'product_id',
-            minWidth: 170,
-            getProps: (state, rowInfo, column) => {
-                return {
-                    style: {
-                        color: 'black',
-                    },
-                };
-            },
-        },
-        {
-            Header: props => <span style={{ color: 'black' }}>Quantity</span>,
+            Header: props => <span style={{ color: 'black' }}>Qty</span>,
             accessor: 'quantity',
-            minWidth: 170,
+            minWidth: 65,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
@@ -108,7 +108,7 @@ export default function FullScreenDialog(props) {
         {
             Header: props => <span style={{ color: 'black' }}>Sub Total</span>,
             accessor: 'subtotal',
-            minWidth: 170,
+            minWidth: 80,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
@@ -117,34 +117,34 @@ export default function FullScreenDialog(props) {
                 };
             },
         },
-        {
-            Header: props => <span style={{ color: 'black' }}>Sub Total Tax</span>,
-            accessor: 'subtotal_tax',
-            minWidth: 170,
-            getProps: (state, rowInfo, column) => {
-                return {
-                    style: {
-                        color: 'black',
-                    },
-                };
-            },
-        },
-        {
-            Header: props => <span style={{ color: 'black' }}>Tax Class</span>,
-            accessor: 'tax_class',
-            minWidth: 170,
-            getProps: (state, rowInfo, column) => {
-                return {
-                    style: {
-                        color: 'black',
-                    },
-                };
-            },
-        },
+        // {
+        //     Header: props => <span style={{ color: 'black' }}>Sub Total Tax</span>,
+        //     accessor: 'subtotal_tax',
+        //     minWidth: 170,
+        //     getProps: (state, rowInfo, column) => {
+        //         return {
+        //             style: {
+        //                 color: 'black',
+        //             },
+        //         };
+        //     },
+        // },
+        // {
+        //     Header: props => <span style={{ color: 'black' }}>Tax Class</span>,
+        //     accessor: 'tax_class',
+        //     minWidth: 170,
+        //     getProps: (state, rowInfo, column) => {
+        //         return {
+        //             style: {
+        //                 color: 'black',
+        //             },
+        //         };
+        //     },
+        // },
         {
             Header: props => <span style={{ color: 'black' }}>Total</span>,
             accessor: 'total',
-            minWidth: 170,
+            minWidth: 80,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
@@ -156,7 +156,7 @@ export default function FullScreenDialog(props) {
         {
             Header: props => <span style={{ color: 'black' }}>Total Tax</span>,
             accessor: 'total_tax',
-            minWidth: 170,
+            minWidth: 80,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
@@ -165,18 +165,18 @@ export default function FullScreenDialog(props) {
                 };
             },
         },
-        {
-            Header: props => <span style={{ color: 'black' }}>Variation ID</span>,
-            accessor: 'variation_id',
-            minWidth: 170,
-            getProps: (state, rowInfo, column) => {
-                return {
-                    style: {
-                        color: 'black',
-                    },
-                };
-            },
-        },
+        // {
+        //     Header: props => <span style={{ color: 'black' }}>Variation ID</span>,
+        //     accessor: 'variation_id',
+        //     minWidth: 170,
+        //     getProps: (state, rowInfo, column) => {
+        //         return {
+        //             style: {
+        //                 color: 'black',
+        //             },
+        //         };
+        //     },
+        // },
         // {
         //     Header: props => <span style={{ color: 'black' }}>Order ID</span>,
         //     accessor: 'id',

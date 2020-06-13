@@ -38,9 +38,10 @@ function Content(props) {
     };
     const columns = [
         {
-            Header: props => <span style={{ color: 'black' }}>Order ID</span>,
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Order ID</span>,
             accessor: 'id',
-            minWidth: 170,
+            minWidth: 80,
+            maxWidth: 90,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
@@ -51,7 +52,7 @@ function Content(props) {
         },
         {
             accessor: 'date',
-            Header: props => <span style={{ color: 'black' }}>Order Date</span>,
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Order Date</span>,
             minWidth: 170,
             getProps: (state, rowInfo, column) => {
                 return {
@@ -63,8 +64,9 @@ function Content(props) {
         },
         {
             accessor: 'status',
-            Header: props => <span style={{ color: 'black' }}>Order Status</span>,
-            minWidth: 170,
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Order Status</span>,
+            maxWidth: 130,
+            minWidth: 110,
             align: 'right',
             getProps: (state, rowInfo, column) => {
                 return {
@@ -76,7 +78,7 @@ function Content(props) {
         },
         {
             accessor: 'fname',
-            Header: props => <span style={{ color: 'black' }}>First Name</span>,
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>First Name</span>,
             minWidth: 170,
             align: 'right',
             getProps: (state, rowInfo, column) => {
@@ -89,7 +91,7 @@ function Content(props) {
         },
         {
             accessor: 'lname',
-            Header: props => <span style={{ color: 'black' }}>Last Name</span>,
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Last Name</span>,
             minWidth: 170,
             align: 'right',
             getProps: (state, rowInfo, column) => {
@@ -102,8 +104,9 @@ function Content(props) {
         },
         {
             accessor: 'address',
-            Header: props => <span style={{ color: 'black' }}>Shipping Address</span>,
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Address</span>,
             minWidth: 170,
+            maxWidth: 170,
             align: 'right',
             getProps: (state, rowInfo, column) => {
                 return {
@@ -115,8 +118,9 @@ function Content(props) {
         },
         {
             accessor: 'postCode',
-            Header: props => <span style={{ color: 'black' }}>Shipping Post Code</span>,
-            minWidth: 170,
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Post Code</span>,
+            minWidth: 90,
+            // maxWidth: 90,
             align: 'right',
             getProps: (state, rowInfo, column) => {
                 return {
@@ -128,8 +132,8 @@ function Content(props) {
         },
         {
             accessor: 'city',
-            Header: props => <span style={{ color: 'black' }}>Shipping City</span>,
-            minWidth: 170,
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>City</span>,
+            minWidth: 120,
             align: 'right',
             getProps: (state, rowInfo, column) => {
                 return {
@@ -141,8 +145,8 @@ function Content(props) {
         },
         {
             accessor: 'tel',
-            Header: props => <span style={{ color: 'black' }}>Tel Number</span>,
-            minWidth: 170,
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Tel Number</span>,
+            minWidth: 120,
             align: 'right',
             getProps: (state, rowInfo, column) => {
                 return {
@@ -154,7 +158,7 @@ function Content(props) {
         },
         {
             accessor: 'orders',
-            Header: props => <span style={{ color: 'black' }}>Product Ordered</span>,
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Products Ordered</span>,
             minWidth: 170,
             align: 'right',
             getProps: (state, rowInfo, column) => {
@@ -167,8 +171,8 @@ function Content(props) {
         },
         {
             accessor: 'qty',
-            Header: props => <span style={{ color: 'black' }}>Quantity</span>,
-            minWidth: 170,
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Qty.</span>,
+            minWidth: 65,
             align: 'right',
             getProps: (state, rowInfo, column) => {
                 return {
@@ -180,8 +184,8 @@ function Content(props) {
         },
         {
             accessor: 'price',
-            Header: props => <span style={{ color: 'black' }}>Total Order Price</span>,
-            minWidth: 170,
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Total Price</span>,
+            minWidth: 100,
             align: 'right',
             getProps: (state, rowInfo, column) => {
                 return {
@@ -193,8 +197,8 @@ function Content(props) {
         },
         {
             accessor: 'details',
-            Header: props => <span style={{ color: 'black' }}>Delivery Details</span>,
-            minWidth: 170,
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Delivery Details</span>,
+            minWidth: 125,
             align: 'right',
             getProps: (state, rowInfo, column) => {
                 return {
@@ -206,7 +210,7 @@ function Content(props) {
         },
         {
             accessor: 'note',
-            Header: props => <span style={{ color: 'black' }}>Customer Note</span>,
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Customer Note</span>,
             minWidth: 170,
             align: 'right',
             getProps: (state, rowInfo, column) => {
@@ -219,8 +223,8 @@ function Content(props) {
         },
         {
             accessor: 'action',
-            Header: props => <span style={{ color: 'black' }}>Print</span>,
-            minWidth: 170,
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Print</span>,
+            minWidth: 70,
             align: 'right',
             getProps: (state, rowInfo, column) => {
                 return {
@@ -285,7 +289,7 @@ function Content(props) {
                         element.quantity,
                         element.totalOrderPrice,
                         <ul style={{ fontSize: "10px", padding: "0px" }}>
-                            <li style={{padding:"0",marginBottom:"-8px",marginTop:"-10px"}} key={1}>{element.deliveryDetails.date}</li>
+                            <li style={{ padding: "0", marginBottom: "-8px", marginTop: "-10px" }} key={1}>{element.deliveryDetails.date}</li>
                             <li key={2}>{element.deliveryDetails.timeslot}</li>
                         </ul>,
                         element.customerNote,
@@ -294,16 +298,16 @@ function Content(props) {
                                 pathname: "/generate-pdf",
                                 state: {
                                     deliveryDate: element.deliveryDetails.date,
-                                    shippingName: element.firstname,
+                                    shippingName: `${element.firstname} ${element.lastname}`,
                                     shippingAddress: element.shipping.address1,
                                     shippingPostcode: element.shipping.postCode,
                                     shippingCity: element.shipping.city,
                                     telePhone: element.telephone,
                                     orderId: element.orderId,
-                                    invoiceName: "I-N",
-                                    invoiceAddress: "I-A",
-                                    invoicePostcode: "I-P",
-                                    invoiceCity: "I-C",
+                                    invoiceName: `${element.firstname} ${element.lastname}`,
+                                    invoiceAddress: element.shipping.address1,
+                                    invoicePostcode: element.shipping.postCode,
+                                    invoiceCity: element.shipping.city,
                                     total: element.totalOrderPrice,
                                     orderProduct: element.orderedProducts
                                 }
