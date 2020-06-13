@@ -17,7 +17,15 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CenteredGrid(props) {
     const classes = useStyles();
-    let { deliveryDate, shippingName, shippingAddress, shippingPostcode, shippingCity, telePhone, orderId, invoiceName, invoiceAddress, invoicePostcode, invoiceCity } =props;
+    React.useEffect(() => {
+        window.print();
+    }, [])
+
+    let { total, orderProduct, deliveryDate, shippingName, shippingAddress, shippingPostcode, shippingCity, telePhone, orderId, invoiceName, invoiceAddress, invoicePostcode, invoiceCity } = props.history.location.state;
+
+    const products = () => {
+
+    }
     return (
         <div className={classes.root}>
             <Grid container spacing={3}>
@@ -29,10 +37,13 @@ export default function CenteredGrid(props) {
                             <Grid item xs={1}>
                             </Grid>
                             <Grid item xs={5}>
-                                {deliveryDate ? deliveryDate : ""}
+                                <h5 style={{ fontWeight: "bolder", textAlign: "left" }}>
+                                    {deliveryDate ? deliveryDate : ""}
+                                </h5>
                             </Grid>
                             <Grid item xs={5}>
-                                {orderId}
+                                <h5 style={{ fontWeight: "bolder", textAlign: "center" }}> {orderId}
+                                </h5>
                             </Grid>
                             <Grid item xs={1}>
                             </Grid>
@@ -41,10 +52,13 @@ export default function CenteredGrid(props) {
                             <Grid item xs={1}>
                             </Grid>
                             <Grid item xs={5}>
-                                {shippingName}
+                                <h5 style={{ fontWeight: "bolder", textAlign: "left" }}>{shippingName}
+                                </h5>
                             </Grid>
                             <Grid item xs={5}>
-                                {invoiceName}
+
+                                <h5 style={{ fontWeight: "bolder", textAlign: "center" }}>{invoiceName}
+                                </h5>
                             </Grid>
                             <Grid item xs={1}>
                             </Grid>
@@ -53,10 +67,12 @@ export default function CenteredGrid(props) {
                             <Grid item xs={1}>
                             </Grid>
                             <Grid item xs={5}>
-                                {shippingAddress}
+                                <h5 style={{ fontWeight: "bolder", textAlign: "left" }}>{shippingAddress}
+                                </h5>
                             </Grid>
                             <Grid item xs={5}>
-                                {invoiceAddress}
+                                <h5 style={{ fontWeight: "bolder", textAlign: "center" }}>{invoiceAddress}
+                                </h5>
                             </Grid>
                             <Grid item xs={1}>
                             </Grid>
@@ -65,10 +81,12 @@ export default function CenteredGrid(props) {
                             <Grid item xs={1}>
                             </Grid>
                             <Grid item xs={5}>
-                                {shippingPostcode}
+                                <h5 style={{ fontWeight: "bolder", textAlign: "left" }}>{shippingPostcode}
+                                </h5>
                             </Grid>
                             <Grid item xs={5}>
-                                {invoicePostcode}
+                                <h5 style={{ fontWeight: "bolder", textAlign: "center" }}> {invoicePostcode}
+                                </h5>
                             </Grid>
                             <Grid item xs={1}>
                             </Grid>
@@ -77,10 +95,11 @@ export default function CenteredGrid(props) {
                             <Grid item xs={1}>
                             </Grid>
                             <Grid item xs={5}>
-                                {shippingCity}
+                                <h5 style={{ fontWeight: "bolder", textAlign: "left" }}>{shippingCity}
+                                </h5>
                             </Grid>
                             <Grid item xs={5}>
-                                {invoiceCity}
+                                <h5 style={{ fontWeight: "bolder", textAlign: "center" }}>{invoiceCity}</h5>
                             </Grid>
                             <Grid item xs={1}>
                             </Grid>
@@ -89,7 +108,8 @@ export default function CenteredGrid(props) {
                             <Grid item xs={1}>
                             </Grid>
                             <Grid item xs={5}>
-                                {telePhone}
+                                <h5 style={{ fontWeight: "bolder", textAlign: "left" }}>{telePhone}
+                                </h5>
                             </Grid>
                             <Grid item xs={5}>
 
@@ -99,9 +119,10 @@ export default function CenteredGrid(props) {
                         </Grid>
 
 
-                        <Grid container spacing={3} style={{ backgroundColor: "grey" }}>
-
-                            <Grid item xs={8}>
+                        <Grid container spacing={3} style={{ backgroundColor: "#E3E3E5" }}>
+                            <Grid item xs={1}>
+                            </Grid>
+                            <Grid item xs={7}>
                                 <h4 style={{ fontWeight: "bolder", textAlign: "left" }}>Product</h4>
                             </Grid>
                             <Grid item xs={3}>
@@ -110,36 +131,34 @@ export default function CenteredGrid(props) {
                             <Grid item xs={1}>
                             </Grid>
                         </Grid>
-                        {
-                            [1, 2].map((element) => (
-                                <>
-
-                                    <Grid container spacing={3}>
-
-                                        <Grid item xs={8}>
-                                            <h6 style={{ fontWeight: "normal", textAlign: "left" }}>{element}</h6>
-                                        </Grid>
-                                        <Grid item xs={3}>
-                                            <h6>{element}</h6>
-                                        </Grid>
-                                        <Grid item xs={1}>
-                                        </Grid>
+                        {orderProduct.map((element, i) => (
+                            <>
+                                <Grid container spacing={3}>
+                                    <Grid item xs={1}>
                                     </Grid>
-                                </>
+                                    <Grid item xs={7}>
+                                        <h6 style={{ fontWeight: "normal", textAlign: "left" }}>{element.name}</h6>
+                                    </Grid>
+                                    <Grid item xs={3}>
+                                        <h6>{element.quantity}</h6>
+                                    </Grid>
+                                    <Grid item xs={1}>
+                                    </Grid>
+                                </Grid>
+                            </>
 
-                            ))
-                        }
-                        <Grid container spacing={3} style={{ backgroundColor: "grey" }}>
+                        ))}
+                        <Grid container spacing={3} style={{ backgroundColor: "#E3E3E5" }}>
                             <Grid item xs={1}>
                             </Grid>
-                            <Grid item xs={7}>
+                            <Grid item xs={6}>
 
                             </Grid>
                             <Grid item xs={3}>
                                 <h4 style={{ fontWeight: "bolder" }}>Total</h4>
                             </Grid>
-                            <Grid item xs={1}>
-                                <h4 style={{ fontWeight: "normal" }}>1</h4>
+                            <Grid item xs={2}>
+                                <h4 style={{ fontWeight: "normal", textAlign: "left" }}>{total}</h4>
                             </Grid>
                         </Grid>
                     </Paper>

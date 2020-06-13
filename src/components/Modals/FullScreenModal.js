@@ -17,6 +17,7 @@ import 'react-table-6/react-table.css';
 const useStyles = makeStyles((theme) => ({
     appBar: {
         position: 'relative',
+        backgroundColor: "black"
     },
     title: {
         marginLeft: theme.spacing(2),
@@ -190,7 +191,7 @@ export default function FullScreenDialog(props) {
         // }
 
     ]
-    function createData(id, name, price, product_id, quantity, sku, subtotal, subtotal_tax, tax_class, total, total_tax, variation_id ) {
+    function createData(id, name, price, product_id, quantity, sku, subtotal, subtotal_tax, tax_class, total, total_tax, variation_id) {
         return {
             id, name, price, product_id, quantity, sku, subtotal, subtotal_tax, tax_class, total, total_tax, variation_id
         };
@@ -206,11 +207,11 @@ export default function FullScreenDialog(props) {
                 element.sku,
                 element.subtotal,
                 element.tax_class,
-                
+
                 element.total,
                 element.total_tax,
                 element.variation_id,
-              
+
             )
         ))
         : []

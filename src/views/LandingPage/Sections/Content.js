@@ -18,8 +18,11 @@ import Filters from "../../../components/Filters/Filters"
 import _ from "lodash";
 import { formatDate } from "../../../assets/helpers/helpers"
 import FullScreenModal from "../../../components/Modals/FullScreenModal"
+import Button from '@material-ui/core/Button';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import { withRouter, Link } from "react-router-dom"
 const useStyles = makeStyles(styles);
-export default function Content(props) {
+function Content(props) {
     const [rows, setRows] = React.useState([]);
     const [page, setPage] = React.useState(0);
     const [loading, setLoading] = React.useState(false);
@@ -212,8 +215,21 @@ export default function Content(props) {
                 };
             },
         },
+        {
+            accessor: 'action',
+            Header: props => <span style={{ color: 'black' }}>Print</span>,
+            minWidth: 170,
+            align: 'right',
+            getProps: (state, rowInfo, column) => {
+                return {
+                    style: {
+                        color: 'black',
+                    },
+                };
+            },
+        },
     ];
-    function createData(id, date, status, fname, lname, address, postCode, city, tel, orders, qty, price, details, note, ) {
+    function createData(id, date, status, fname, lname, address, postCode, city, tel, orders, qty, price, details, note, action) {
         return {
             id,
             date,
@@ -229,10 +245,12 @@ export default function Content(props) {
             price,
             details,
             note,
+            action
         };
     }
     const classes = useStyles();
     const fetch = (state, q) => {
+        if (typeof q === "object") return
         setLoading(true)
         let params = {
             page: state && state.page ? +state.page + 1 : 1,
@@ -240,7 +258,8 @@ export default function Content(props) {
             search: q ? q : ""
         }
         getAllWords(params).then((res) => {
-            let data = (res.data.data);
+            let data = (res.data && res.data.data ? res.data.data : []);
+
             let rows = data && data.length ?
                 data.map(element => (
                     createData(
@@ -264,11 +283,39 @@ export default function Content(props) {
                             <li key={2}>{element.deliveryDetails.timeslot}</li>
                         </ul>,
                         element.customerNote,
+                        <Button onClick={() => {
+                            props.history.push({
+                                pathname: "/generate-pdf",
+                                state: {
+                                    deliveryDate: element.deliveryDetails.date,
+                                    shippingName: "S-N",
+                                    shippingAddress: element.shipping.address1,
+                                    shippingPostcode: element.shipping.postCode,
+                                    shippingCity: element.shipping.city,
+                                    telePhone: element.telephone,
+                                    orderId: element.orderId,
+                                    invoiceName: "I-N",
+                                    invoiceAddress: "I-A",
+                                    invoicePostcode: "I-P",
+                                    invoiceCity: "I-C",
+                                    total: element.totalOrderPrice,
+                                    orderProduct: element.orderedProducts
+                                }
+
+                            })
+                        }}
+                            variant="contained"
+                             color="primary"
+                            target="_blank"
+                        >
+                            <VisibilityIcon />
+                        </Button>
+
                     )
                 ))
                 : []
             setRows(rows)
-            setPage(res.data.pages)
+            setPage(res.data && res.data.pages ? res.data.pages : 0)
             setLoading(false)
         })
     }
@@ -311,3 +358,4 @@ export default function Content(props) {
         </div>
     );
 }
+export default withRouter(Content)

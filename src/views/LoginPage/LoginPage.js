@@ -44,7 +44,7 @@ export default function LoginPage(props) {
       password: "admin"
     }
     login(obj).then(res => {
-      if (res.data.success) {
+      if (res.data && res.data.success) {
         props.history.push("/landing-page");
       }
     })
