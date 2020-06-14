@@ -159,7 +159,7 @@ function Content(props) {
         {
             accessor: 'orders',
             Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Products Ordered</span>,
-            minWidth: 170,
+            minWidth: 300,
             align: 'right',
             getProps: (state, rowInfo, column) => {
                 return {
@@ -285,7 +285,7 @@ function Content(props) {
                         <u onClick={() => {
                             setOpen(true)
                             setData(element.orderedProducts)
-                        }} style={{ cursor: "pointer" }}>{`${element.orderedProducts.length} Read More...`}</u>,
+                        }} style={{ cursor: "pointer" }}>{element.orderedProducts.length == 1 ? `${element.orderedProducts[0].name}`:`Click to view ${element.orderedProducts.length} products`}</u>,
                         element.quantity,
                         element.totalOrderPrice,
                         <ul style={{ fontSize: "10px", padding: "0px" }}>

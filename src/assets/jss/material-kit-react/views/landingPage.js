@@ -26,6 +26,7 @@ const landingPageStyle = {
     zIndex: "3"
   },
   mainRaised: {
+    paddingTop: '7%',
     margin: "-60px 30px 0px",
     borderRadius: "6px",
     boxShadow:
