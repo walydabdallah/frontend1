@@ -34,85 +34,106 @@ export default function FullScreenDialog(props) {
     let { data } = props;
     const columns = [
         {
-            Header: props => <span style={{ color: 'black' }}>Order ID</span>,
+            Header: props => <span style={{  color: 'black', fontWeight: 'bold', fontSize: '12px'  }}>Order ID</span>,
             accessor: 'id',
-            minWidth: 90,
+            headerStyle: { textAlign: 'right' },
+            minWidth: 70,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
+                        textAlign: 'right',
+                        fontSize: '12px'
                     },
                 };
             },
         },
         {
-            Header: props => <span style={{ color: 'black' }}>Product ID</span>,
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px'  }}>Product ID</span>,
             accessor: 'product_id',
-            minWidth: 100,
+            headerStyle: { textAlign: 'right' },
+            minWidth: 80,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
+                        textAlign: 'right',
+                        fontSize: '12px'
                     },
                 };
             },
         },
         {
-            Header: props => <span style={{ color: 'black' }}>Product Name</span>,
+            Header: props => <span style={{  color: 'black', fontWeight: 'bold', fontSize: '12px'  }}>Product Name</span>,
+            headerStyle: { textAlign: 'right' },
             accessor: 'name',
             minWidth: 170,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
+                        textAlign: 'right',
+                        fontSize: '12px'
                     },
                 };
             },
         },
         {
-            Header: props => <span style={{ color: 'black' }}>Price</span>,
+            Header: props => <span style={{  color: 'black', fontWeight: 'bold', fontSize: '12px'  }}>Price</span>,
+            headerStyle: { textAlign: 'right' },
             accessor: 'price',
-            minWidth: 100,
+            minWidth: 70,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
+                        textAlign: 'right',
+                        fontSize: '12px'
                     },
                 };
             },
         },
         {
-            Header: props => <span style={{ color: 'black' }}>Qty</span>,
+            Header: props => <span style={{  color: 'black', fontWeight: 'bold', fontSize: '12px'  }}>Qty</span>,
             accessor: 'quantity',
-            minWidth: 65,
+            headerStyle: { textAlign: 'right' },
+            minWidth: 50,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
+                        textAlign: 'right',
+                        fontSize: '12px'
                     },
                 };
             },
         },
         {
-            Header: props => <span style={{ color: 'black' }}>SKU</span>,
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px'  }}>SKU</span>,
             accessor: 'sku',
+            headerStyle: { textAlign: 'right' },
             minWidth: 170,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
+                        textAlign: 'right',
+                        fontSize: '12px'
                     },
                 };
             },
         },
         {
-            Header: props => <span style={{ color: 'black' }}>Sub Total</span>,
+            Header: props => <span style={{  color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Sub Total</span>,
+            headerStyle: { textAlign: 'right' },
             accessor: 'subtotal',
-            minWidth: 80,
+            minWidth: 70,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
+                        textAlign: 'right',
+                        fontSize: '12px'
                     },
                 };
             },
@@ -142,25 +163,31 @@ export default function FullScreenDialog(props) {
         //     },
         // },
         {
-            Header: props => <span style={{ color: 'black' }}>Total</span>,
+            Header: props => <span style={{  color: 'black', fontWeight: 'bold', fontSize: '12px'  }}>Total</span>,
+            headerStyle: { textAlign: 'right' },
             accessor: 'total',
-            minWidth: 80,
+            minWidth: 70,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
+                        textAlign: 'right',
+                        fontSize: '12px'
                     },
                 };
             },
         },
         {
-            Header: props => <span style={{ color: 'black' }}>Total Tax</span>,
+            Header: props => <span style={{  color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Total Tax</span>,
+            headerStyle: { textAlign: 'right' },
             accessor: 'total_tax',
-            minWidth: 80,
+            minWidth: 70,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
+                        textAlign: 'right',
+                        fontSize: '12px'
                     },
                 };
             },

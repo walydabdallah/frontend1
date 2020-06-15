@@ -42,15 +42,13 @@ function Content(props) {
             accessor: 'id',
             headerStyle: { textAlign: 'right' },
             sortable: true,
-            Cell: row => (
-                <div style={{ textAlign: "right" }}>{row.value}</div>
-            ),
             minWidth: 60,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
-                        fontSize: '12px'
+                        fontSize: '12px',
+                        textAlign: 'right'
                     },
                 };
             },
@@ -60,15 +58,13 @@ function Content(props) {
             Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Date</span>,
             headerStyle: { textAlign: 'right' },
             sortable: true,
-            Cell: row => (
-                <div style={{ textAlign: "right" }}>{row.value}</div>
-            ),
             minWidth: 60,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
-                        fontSize: '12px'
+                        fontSize: '12px',
+                        textAlign: 'right'
                     },
                 };
             },
@@ -77,15 +73,13 @@ function Content(props) {
             accessor: 'status',
             Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Status</span>,
             headerStyle: { textAlign: 'right' },
-            Cell: row => (
-                <div style={{ textAlign: "right" }}>{row.value}</div>
-            ),
             minWidth: 70,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
-                        fontSize: '12px'
+                        fontSize: '12px',
+                        textAlign: 'right'
                     },
                 };
             },
@@ -94,15 +88,13 @@ function Content(props) {
             accessor: 'fname',
             Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>First Name</span>,
             headerStyle: { textAlign: 'right' },
-            Cell: row => (
-                <div style={{ textAlign: "right" }}>{row.value}</div>
-            ),
             minWidth: 95,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
-                        fontSize: '12px'
+                        fontSize: '12px',
+                        textAlign: 'right'
                     },
                 };
             },
@@ -111,15 +103,13 @@ function Content(props) {
             accessor: 'lname',
             Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Last Name</span>,
             headerStyle: { textAlign: 'right' },
-            Cell: row => (
-                <div style={{ textAlign: "right" }}>{row.value}</div>
-            ),
             minWidth: 95,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
-                        fontSize: '12px'
+                        fontSize: '12px',
+                        textAlign: 'right'
                     },
                 };
             },
@@ -128,15 +118,13 @@ function Content(props) {
             accessor: 'address',
             Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Address</span>,
             headerStyle: { textAlign: 'right' },
-            Cell: row => (
-                <div style={{ textAlign: "right" }}>{row.value}</div>
-            ),
             minWidth: 170,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
-                        fontSize: '12px'
+                        fontSize: '12px',
+                        textAlign: 'right'
                     },
                 };
             },
@@ -145,15 +133,13 @@ function Content(props) {
             accessor: 'postCode',
             Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Post Code</span>,
             headerStyle: { textAlign: 'right' },
-            Cell: row => (
-                <div style={{ textAlign: "right" }}>{row.value}</div>
-            ),
             minWidth: 70,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
-                        fontSize: '12px'
+                        fontSize: '12px',
+                        textAlign: 'right'
                     },
                 };
             },
@@ -162,15 +148,13 @@ function Content(props) {
             accessor: 'city',
             Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>City</span>,
             headerStyle: { textAlign: 'right' },
-            Cell: row => (
-                <div style={{ textAlign: "right" }}>{row.value}</div>
-            ),
             minWidth: 90,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
-                        fontSize: '12px'
+                        fontSize: '12px',
+                        textAlign: 'right'
                     },
                 };
             },
@@ -179,15 +163,13 @@ function Content(props) {
             accessor: 'tel',
             Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Tel Number</span>,
             headerStyle: { textAlign: 'right' },
-            Cell: row => (
-                <div style={{ textAlign: "right" }}>{row.value}</div>
-            ),
             minWidth: 90,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
-                        fontSize: '12px'
+                        fontSize: '12px',
+                        textAlign: 'right'
                     },
                 };
             },
@@ -196,15 +178,13 @@ function Content(props) {
             accessor: 'qty',
             Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Qty.</span>,
             headerStyle: { textAlign: 'right' },
-            Cell: row => (
-                <div style={{ textAlign: "right" }}>{row.value}</div>
-            ),
             minWidth: 40,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
-                        fontSize: '12px'
+                        fontSize: '12px',
+                        textAlign: 'right'
                     },
                 };
             },
@@ -213,15 +193,13 @@ function Content(props) {
             accessor: 'orders',
             Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Products Ordered</span>,
             headerStyle: { textAlign: 'right' },
-            Cell: row => (
-                <div style={{ textAlign: "right" }}>{row.value}</div>
-            ),
             minWidth: 220,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
-                        fontSize: '12px'
+                        fontSize: '12px',
+                        textAlign: 'right'
                     },
                 };
             },
@@ -230,15 +208,13 @@ function Content(props) {
             accessor: 'price',
             Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Total Price</span>,
             headerStyle: { textAlign: 'right' },
-            Cell: row => (
-                <div style={{ textAlign: "right" }}>{row.value}</div>
-            ),
             minWidth: 70,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
-                        fontSize: '12px'
+                        fontSize: '12px',
+                        textAlign: 'right'
                     },
                 };
             },
@@ -247,16 +223,14 @@ function Content(props) {
             accessor: 'details',
             Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Delivery Details</span>,
             headerStyle: { textAlign: 'right' },
-            Cell: row => (
-                <div style={{ textAlign: "right" }}>{row.value}</div>
-            ),
             sortable: true,
             minWidth: 100,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
-                        fontSize: '12px'
+                        fontSize: '12px',
+                        textAlign: 'right'
                     },
                 };
             },
@@ -265,15 +239,13 @@ function Content(props) {
             accessor: 'note',
             Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Customer Note</span>,
             headerStyle: { textAlign: 'right' },
-            Cell: row => (
-                <div style={{ textAlign: "right" }}>{row.value}</div>
-            ),
             minWidth: 170,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
-                        fontSize: '12px'
+                        fontSize: '12px',
+                        textAlign: 'right'
                     },
                 };
             },
@@ -282,15 +254,13 @@ function Content(props) {
             accessor: 'action',
             Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Print</span>,
             headerStyle: { textAlign: 'right' },
-            Cell: row => (
-                <div style={{ textAlign: "right" }}>{row.value}</div>
-            ),
             minWidth: 70,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
-                        fontSize: '12px'
+                        fontSize: '12px',
+                        textAlign: 'right'
                     },
                 };
             },
