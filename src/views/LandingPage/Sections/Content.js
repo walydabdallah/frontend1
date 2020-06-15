@@ -41,6 +41,7 @@ function Content(props) {
             Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Order ID</span>,
             accessor: 'id',
             headerStyle: { textAlign: 'right' },
+            sortable: true,
             Cell: row => (
                 <div style={{ textAlign: "right" }}>{row.value}</div>
             ),
@@ -58,6 +59,7 @@ function Content(props) {
             accessor: 'date',
             Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Date</span>,
             headerStyle: { textAlign: 'right' },
+            sortable: true,
             Cell: row => (
                 <div style={{ textAlign: "right" }}>{row.value}</div>
             ),
@@ -326,7 +328,9 @@ function Content(props) {
             page: state && state.page ? +state.page + 1 : 1,
             status: filter ? filter : "any",
             search: q ? q : "",
-            delivery: state && state.sorted.length ? state.sorted[0].desc ? 1 : -1 : -1
+            delivery: state && state.sorted.length ? state.sorted[0].id == 'details' ? state.sorted[0].desc ? -1 : 1 : 0 : 0,
+            orderby: state && state.sorted.length ? state.sorted[0].id != 'details' ? state.sorted[0].id : '' : '',
+            order: state && state.sorted.length ? state.sorted[0].id != 'details' ? state.sorted[0].desc ? 'desc' : 'asc' : '' : ''
         }
         getAllWords(params).then((res) => {
             let data = (res.data && res.data.data ? res.data.data : []);
