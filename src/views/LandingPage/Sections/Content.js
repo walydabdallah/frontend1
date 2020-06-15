@@ -56,7 +56,7 @@ function Content(props) {
         },
         {
             accessor: 'date',
-            Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px'}}>Date</span>,
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Date</span>,
             headerStyle: { textAlign: 'right' },
             Cell: row => (
                 <div style={{ textAlign: "right" }}>{row.value}</div>
@@ -316,6 +316,7 @@ function Content(props) {
     const classes = useStyles();
     const fetch = (state, q) => {
         // if (typeof q === "object") return
+        console.log(state)
         if (!count) {
             count++;
             return
@@ -324,7 +325,8 @@ function Content(props) {
         let params = {
             page: state && state.page ? +state.page + 1 : 1,
             status: filter ? filter : "any",
-            search: q ? q : ""
+            search: q ? q : "",
+            delivery: state && state.sorted.length ? state.sorted[0].desc ? 1 : -1 : -1
         }
         getAllWords(params).then((res) => {
             let data = (res.data && res.data.data ? res.data.data : []);
