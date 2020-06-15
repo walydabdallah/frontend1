@@ -38,198 +38,257 @@ function Content(props) {
     };
     const columns = [
         {
-            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Order ID</span>,
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Order ID</span>,
             accessor: 'id',
-            minWidth: 80,
-            maxWidth: 90,
+            headerStyle: { textAlign: 'right' },
+            Cell: row => (
+                <div style={{ textAlign: "right" }}>{row.value}</div>
+            ),
+            minWidth: 60,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
+                        fontSize: '12px'
                     },
                 };
             },
         },
         {
             accessor: 'date',
-            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Order Date</span>,
-            minWidth: 170,
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px'}}>Date</span>,
+            headerStyle: { textAlign: 'right' },
+            Cell: row => (
+                <div style={{ textAlign: "right" }}>{row.value}</div>
+            ),
+            minWidth: 60,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
+                        fontSize: '12px'
                     },
                 };
             },
         },
         {
             accessor: 'status',
-            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Order Status</span>,
-            maxWidth: 130,
-            minWidth: 110,
-            align: 'right',
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Status</span>,
+            headerStyle: { textAlign: 'right' },
+            Cell: row => (
+                <div style={{ textAlign: "right" }}>{row.value}</div>
+            ),
+            minWidth: 70,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
+                        fontSize: '12px'
                     },
                 };
             },
         },
         {
             accessor: 'fname',
-            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>First Name</span>,
-            minWidth: 170,
-            align: 'right',
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>First Name</span>,
+            headerStyle: { textAlign: 'right' },
+            Cell: row => (
+                <div style={{ textAlign: "right" }}>{row.value}</div>
+            ),
+            minWidth: 95,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
+                        fontSize: '12px'
                     },
                 };
             },
         },
         {
             accessor: 'lname',
-            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Last Name</span>,
-            minWidth: 170,
-            align: 'right',
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Last Name</span>,
+            headerStyle: { textAlign: 'right' },
+            Cell: row => (
+                <div style={{ textAlign: "right" }}>{row.value}</div>
+            ),
+            minWidth: 95,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
+                        fontSize: '12px'
                     },
                 };
             },
         },
         {
             accessor: 'address',
-            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Address</span>,
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Address</span>,
+            headerStyle: { textAlign: 'right' },
+            Cell: row => (
+                <div style={{ textAlign: "right" }}>{row.value}</div>
+            ),
             minWidth: 170,
-            maxWidth: 170,
-            align: 'right',
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
+                        fontSize: '12px'
                     },
                 };
             },
         },
         {
             accessor: 'postCode',
-            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Post Code</span>,
-            minWidth: 90,
-            // maxWidth: 90,
-            align: 'right',
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Post Code</span>,
+            headerStyle: { textAlign: 'right' },
+            Cell: row => (
+                <div style={{ textAlign: "right" }}>{row.value}</div>
+            ),
+            minWidth: 70,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
+                        fontSize: '12px'
                     },
                 };
             },
         },
         {
             accessor: 'city',
-            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>City</span>,
-            minWidth: 120,
-            align: 'right',
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>City</span>,
+            headerStyle: { textAlign: 'right' },
+            Cell: row => (
+                <div style={{ textAlign: "right" }}>{row.value}</div>
+            ),
+            minWidth: 90,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
+                        fontSize: '12px'
                     },
                 };
             },
         },
         {
             accessor: 'tel',
-            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Tel Number</span>,
-            minWidth: 120,
-            align: 'right',
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Tel Number</span>,
+            headerStyle: { textAlign: 'right' },
+            Cell: row => (
+                <div style={{ textAlign: "right" }}>{row.value}</div>
+            ),
+            minWidth: 90,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
-                    },
-                };
-            },
-        },
-        {
-            accessor: 'orders',
-            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Products Ordered</span>,
-            minWidth: 300,
-            align: 'right',
-            getProps: (state, rowInfo, column) => {
-                return {
-                    style: {
-                        color: 'black',
+                        fontSize: '12px'
                     },
                 };
             },
         },
         {
             accessor: 'qty',
-            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Qty.</span>,
-            minWidth: 65,
-            align: 'right',
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Qty.</span>,
+            headerStyle: { textAlign: 'right' },
+            Cell: row => (
+                <div style={{ textAlign: "right" }}>{row.value}</div>
+            ),
+            minWidth: 40,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
+                        fontSize: '12px'
+                    },
+                };
+            },
+        },
+        {
+            accessor: 'orders',
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Products Ordered</span>,
+            headerStyle: { textAlign: 'right' },
+            Cell: row => (
+                <div style={{ textAlign: "right" }}>{row.value}</div>
+            ),
+            minWidth: 220,
+            getProps: (state, rowInfo, column) => {
+                return {
+                    style: {
+                        color: 'black',
+                        fontSize: '12px'
                     },
                 };
             },
         },
         {
             accessor: 'price',
-            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Total Price</span>,
-            minWidth: 100,
-            align: 'right',
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Total Price</span>,
+            headerStyle: { textAlign: 'right' },
+            Cell: row => (
+                <div style={{ textAlign: "right" }}>{row.value}</div>
+            ),
+            minWidth: 70,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
+                        fontSize: '12px'
                     },
                 };
             },
         },
         {
             accessor: 'details',
-            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Delivery Details</span>,
-            minWidth: 125,
-            align: 'right',
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Delivery Details</span>,
+            headerStyle: { textAlign: 'right' },
+            Cell: row => (
+                <div style={{ textAlign: "right" }}>{row.value}</div>
+            ),
+            sortable: true,
+            minWidth: 100,
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
+                        fontSize: '12px'
                     },
                 };
             },
         },
         {
             accessor: 'note',
-            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Customer Note</span>,
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Customer Note</span>,
+            headerStyle: { textAlign: 'right' },
+            Cell: row => (
+                <div style={{ textAlign: "right" }}>{row.value}</div>
+            ),
             minWidth: 170,
-            align: 'right',
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
+                        fontSize: '12px'
                     },
                 };
             },
         },
         {
             accessor: 'action',
-            Header: props => <span style={{ color: 'black', fontWeight: 'bold' }}>Print</span>,
+            Header: props => <span style={{ color: 'black', fontWeight: 'bold', fontSize: '12px' }}>Print</span>,
+            headerStyle: { textAlign: 'right' },
+            Cell: row => (
+                <div style={{ textAlign: "right" }}>{row.value}</div>
+            ),
             minWidth: 70,
-            align: 'right',
             getProps: (state, rowInfo, column) => {
                 return {
                     style: {
                         color: 'black',
+                        fontSize: '12px'
                     },
                 };
             },
@@ -274,7 +333,7 @@ function Content(props) {
                 data.map(element => (
                     createData(
                         element.orderId,
-                        formatDate(element.orderDate),
+                        formatDate(element.orderDate, "DD/MMM"),
                         element.orderStatus,
                         element.firstname,
                         element.lastname,
@@ -285,7 +344,7 @@ function Content(props) {
                         <u onClick={() => {
                             setOpen(true)
                             setData(element.orderedProducts)
-                        }} style={{ cursor: "pointer" }}>{element.orderedProducts.length == 1 ? `${element.orderedProducts[0].name}`:`Click to view ${element.orderedProducts.length} products`}</u>,
+                        }} style={{ cursor: "pointer" }}>{element.orderedProducts.length == 1 ? `${element.orderedProducts[0].name}` : `Click to view ${element.orderedProducts.length} products`}</u>,
                         element.quantity,
                         element.totalOrderPrice,
                         <ul style={{ fontSize: "10px", padding: "0px" }}>
@@ -297,7 +356,8 @@ function Content(props) {
                             props.history.push({
                                 pathname: "/generate-pdf",
                                 state: {
-                                    deliveryDate: element.deliveryDetails.date,
+                                    deliveryDate: element.deliveryDetails.timestamp,
+                                    deliveryTime: element.deliveryDetails.timeslot,
                                     shippingName: `${element.firstname} ${element.lastname}`,
                                     shippingAddress: element.shipping.address1,
                                     shippingPostcode: element.shipping.postCode,
@@ -356,7 +416,7 @@ function Content(props) {
                         filterable={false}
                         overflow={"unset"}
                         columns={columns}
-                        defaultPageSize={10}
+                        defaultPageSize={100}
                         showPagination={true}
                         showPaginationBottom
                         showPaginationTop={false}
