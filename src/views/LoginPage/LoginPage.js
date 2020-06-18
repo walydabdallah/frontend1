@@ -21,16 +21,17 @@ import CustomInput from "components/CustomInput/CustomInput.js";
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 import image from "assets/img/bg7.jpg";
 import { login } from "../../api/api";
-import SnackbarContent from "components/Snackbar/SnackbarContent.js";
+
 import { toast } from 'react-toastify';
+import {  withCookies } from 'react-cookie';
 const useStyles = makeStyles(styles);
 
-export default function LoginPage(props) {
+function LoginPage(props) {
+
   const [cardAnimaton, setCardAnimation] = React.useState("cardHidden");
-  const [name, setName] = React.useState("");
+  const [name] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-
   setTimeout(function () {
     setCardAnimation("");
   }, 700);
@@ -40,17 +41,12 @@ export default function LoginPage(props) {
       email: email,
       password: password
     }
-
-    let storedCreds = {
-      name: "admin",
-      email: "admin@example.com",
-      password: "admin"
-    }
-    login(obj).then(res => {
+    login(obj).then(async (res) => {
       if (res.data && res.data.success) {
-        props.history.push("/landing-page");
+        window.localStorage.setItem('token', res.data.w_auth)
+        if (window.localStorage.getItem('token'))
+          props.history.push("/landing-page");
       } else {
-
         alert("Please Enter the correct Credentials!!")
       }
     })
@@ -66,9 +62,6 @@ export default function LoginPage(props) {
   const { ...rest } = props;
   return (
     <div>
-
-
-
       <Header
         absolute
         color="transparent"
@@ -90,54 +83,10 @@ export default function LoginPage(props) {
                 <form className={classes.form}>
                   <CardHeader color="primary" className={classes.cardHeader}>
                     <h4>Login</h4>
-                    {/* <div className={classes.socialLine}> */}
-                    {/* <Button
-                        justIcon
-                        href="#pablo"
-                        target="_blank"
-                        color="transparent"
-                        onClick={e => e.preventDefault()}
-                      >
-                        <i className={"fab fa-twitter"} />
-                      </Button>
-                      <Button
-                        justIcon
-                        href="#pablo"
-                        target="_blank"
-                        color="transparent"
-                        onClick={e => e.preventDefault()}
-                      >
-                        <i className={"fab fa-facebook"} />
-                      </Button>
-                      <Button
-                        justIcon
-                        href="#pablo"
-                        target="_blank"
-                        color="transparent"
-                        onClick={e => e.preventDefault()}
-                      >
-                        <i className={"fab fa-google-plus-g"} />
-                      </Button>
-                    </div> */}
+
                   </CardHeader>
                   <CardBody>
-                    {/* <CustomInput
-                      labelText="First Name..."
-                      id="first"
-                      value={name}
-                      formControlProps={{
-                        fullWidth: true
-                      }}
-                      onChange={(e) => setName(e.target.value)}
-                      inputProps={{
-                        type: "text",
-                        endAdornment: (
-                          <InputAdornment position="end">
-                            <People className={classes.inputIconsColor} />
-                          </InputAdornment>
-                        )
-                      }}
-                    /> */}
+
                     <CustomInput
                       labelText="Email"
                       id="email"
@@ -191,3 +140,4 @@ export default function LoginPage(props) {
     </div>
   );
 }
+export default withCookies(LoginPage)

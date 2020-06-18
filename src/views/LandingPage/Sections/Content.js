@@ -289,8 +289,8 @@ function Content(props) {
     const fetch = (state, q) => {
         // if (typeof q === "object") return
         console.log(state)
-        if (!count) {
-            count++;
+        if (q === "table") {
+            q = null
             return
         }
         setLoading(true)
@@ -385,7 +385,7 @@ function Content(props) {
                         // ref={(refReactTable) => { this.refReactTable = refReactTable; }}
                         data={rows}
                         pages={page ? page : 1}
-                        onFetchData={(state) => fetch(state, "")}
+                        onFetchData={(state) => fetch(state, "table")}
                         showPageSizeOptions={false}
                         loading={loading}
                         sortable={false}
