@@ -287,12 +287,8 @@ function Content(props) {
     }
     const classes = useStyles();
     const fetch = (state, q) => {
-        // if (typeof q === "object") return
-        
-        if (!count) {
-            count++;
-            return
-        }
+
+
         setLoading(true)
         let params = {
             page: state && state.page ? +state.page + 1 : 1,
@@ -369,7 +365,11 @@ function Content(props) {
         setFilter(value)
     }
     useEffect(() => {
-        fetch()
+        if (!count) {
+            fetch()
+            count++
+        }
+
     }, [filter])
 
     return (
