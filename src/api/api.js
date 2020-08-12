@@ -1,12 +1,21 @@
 import axios from "axios";
 import resolve from './resolve';
 require('dotenv').config()
-let apiBaseUrl = process.env.URL || "https://woocommerce-rest-api-getorders.herokuapp.com/api/v1/wc"
-export const getAllWords = async (params) => {
-    return await resolve(axios.get(`${apiBaseUrl}/order/all?orderby=${params.orderby}&order=${params.order}&delivery=${params.delivery}&page=${params.page}&search=${params.search}&status=${params.status}`)
+let apiBaseUrl = process.env.URL || "http://localhost:8836/api/v1"
+
+export const getOS = async () => {
+    return await resolve(axios.get(`${apiBaseUrl}/OS`)
         .then(res => res.data));
 }
-export const login = async (body) => {
-    return await resolve(axios.post(`${apiBaseUrl}/login`, body)
+export const getData = async (params) => {
+    return await resolve(axios.get(`${apiBaseUrl}/fetch?country=${params.country}&date=${params.date}&state=${params.state}`)
+        .then(res => res.data));
+}
+export const insertData = async (body) => {
+    return await resolve(axios.post(`${apiBaseUrl}/insert`, body)
+        .then(res => res.data));
+}
+export const deleteData = async (id) => {
+    return await resolve(axios.delete(`${apiBaseUrl}/delete/${id}`)
         .then(res => res.data));
 }

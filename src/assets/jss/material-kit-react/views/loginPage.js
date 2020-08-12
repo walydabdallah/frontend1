@@ -7,7 +7,9 @@ const signupPageStyle = {
     position: "relative",
     paddingTop: "20vh",
     color: "#FFFFFF",
-    paddingBottom: "200px"
+    paddingBottom: "200px",
+    display: "flex",
+    width: "auto"
   },
   cardHidden: {
     opacity: "0",
